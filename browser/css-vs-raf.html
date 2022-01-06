@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-vs-raf</title>
+</head>
+<body>
+  css animation
+  <div id="css-animation" class="block">css animation</div>
+  RAF animation
+  <div id="content" class="block">RAF animation</div>
+  <div class="block">
+    <button id="btn">click</button>
+  </div>
+</body>
+<script>
+  document.getElementById('btn').onclick = clickHandler
+  const el = document.getElementById('content')
+
+  function rafRender() {
+    const now  = new Date().valueOf()
+    el.style.transform = `rotate(${(now % 360) / 360}turn)`
+    requestAnimationFrame(rafRender)
+  }
+  const requestId = requestAnimationFrame(rafRender)
+
+  function heavyCalc() {
+    const now = new Date().valueOf()
+    while (new Date().valueOf() < now + 3000){}
+  }
+
+  function createMicroTask() {
+    return Promise.resolve().then(
+      () => {
+        console.log('micro task');
+      }
+    )
+  }
+
+  function clickHandler () {
+    console.log('UI event');
+    // this will block js execution
+    heavyCalc()
+    createMicroTask()
+  }
+
+  function createPromise() {
+    return new Promise(
+      resolve => {
+        console.log('promise func');
+        resolve()
+      })
+      .then(_ => {
+        console.log('promise callback')
+        createMicroTask()
+      })
+  }
+
+  function createMacroTask(duration) {
+    setTimeout(() => {
+      console.log('macro task');
+    }, duration || 0);
+  }
+  console.log('script');
+  createMacroTask()
+  createMacroTask(3000)
+  createMicroTask()
+  createPromise()
+</script>
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .block {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #css-animation {
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-name: loop-rotate;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes loop-rotate {
+    from {transform: rotate(0turn);}
+    to {transform: rotate(1turn);}
+  }
+</style>
+</html>

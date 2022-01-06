@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAF</title>
+</head>
+<body>
+</body>
+<script>
+  const el = document.getElementById('content')
+  let end = false
+
+  function rafRender() {
+    const now = new Date().valueOf()
+    console.log('from RAF', now);
+    if (!end) {
+      requestAnimationFrame(rafRender)
+    }
+  }
+
+  requestAnimationFrame(rafRender)
+  // these 2 macrotask will most likely execute before RAF
+  setTimeout(() => {
+    console.log('1st setTimeout');
+    return Promise.resolve().then(() => {console.log('1st promise')})
+  }, 0);
+  setTimeout(() => {
+    console.log('2nd setTimeout');
+    return Promise.resolve().then(() => {console.log('2nd promise')})
+  }, 0);
+  // this macrotask will most likely execute after RAF
+  setTimeout(() => {
+    console.log('3rd setTimeout');
+    return Promise.resolve().then(() => {
+      console.log('3rd promise')
+      end = true
+    })
+  }, 40);
+</script>
+</html>

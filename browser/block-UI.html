@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eventloop-browser</title>
+</head>
+<body>
+  <div class="block">
+    <button id="block-btn">click-block</button>
+    <button id="btn">click</button>
+  </div>
+</body>
+<script>
+  document.getElementById('btn').onclick = clickHandler
+  document.getElementById('block-btn').onclick = block
+
+  function block() {
+    console.log('heavy calculation');
+    const now = new Date().valueOf()
+    while (new Date().valueOf() < now + 3000){}
+  }
+
+  function clickHandler () {
+    console.log('UI event');
+  }
+</script>
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .block {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #css-animation {
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-name: loop-rotate;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes loop-rotate {
+    from {transform: rotate(0turn);}
+    to {transform: rotate(1turn);}
+  }
+</style>
+</html>

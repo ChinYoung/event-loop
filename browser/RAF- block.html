@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAF- block</title>
+</head>
+<body>
+  <div id="content-a">========================</div>
+</body>
+<script>
+  const elA = document.getElementById('content-a')
+  const speed = 0.2
+
+  function rafRender() {
+    const now  = new Date().valueOf()
+    const newTransform = `rotate(${((speed * now) % 360) / 360}turn)`
+    elA.style.transform = newTransform
+    requestAnimationFrame(rafRender)
+  }
+  const requestId = requestAnimationFrame(rafRender)
+
+  function heavyCalc() {
+    const now = new Date().valueOf()
+    while (new Date().valueOf() < now + (window.heavyCalcDuration || 0)){}
+  }
+
+  // this task will block js execution, thus block rendering thread, result in bad UE
+  setInterval(() => {
+    heavyCalc()
+  })
+</script>
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+</html>

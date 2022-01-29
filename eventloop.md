@@ -59,3 +59,80 @@
 
 - 事件循环的机制大体就是如上所述, 下面就通过一些实例来说明
 <!-- TODO -->
+
+### 基本的循环
+
+- 首先看一下基本的循环, html文档: [事件循环](./browser/eventloop-browser.html)
+
+  - 其中的js脚本会创建以下几种类型的任务
+
+  - UI事件
+
+  ```javascript
+    document.getElementById('btn').onclick = clickHandler
+    function clickHandler() {
+      console.log('UI event');
+      createMicroTask()
+    }
+  ```
+
+  - 直接创建微任务
+
+  ```javascript
+    function createMicroTask() {
+      return Promise.resolve().then(
+        () => {
+          console.log('micro task >>');
+        }
+      )
+    }
+  ```
+
+  - 创建一个promise
+
+  ```javascript
+    function createPromise() {
+      return new Promise(
+        resolve => {
+          console.log('promise func');
+          resolve()
+        })
+        .then(_ => {
+          console.log('promise callback')
+        })
+    }
+  ```
+
+  - 创建一个宏任务
+
+  ```javascript
+    function createMacroTask(duration) {
+      setTimeout(() => {
+        console.log('>macro task', new Date().valueOf());
+      }, duration || 0);
+    }
+  ```
+
+  - 脚本任务
+
+  ```javascript
+    console.log('script');
+  ```
+
+  - 整个脚本会执行以下代码
+
+  ```javascript
+    console.log('script');
+    createMacroTask()
+    createMacroTask()
+    createMacroTask(3000)
+    createMicroTask()
+    createMicroTask()
+    createPromise()
+  ```
+
+  - 最终执行后会得到以下结果:
+
+    1.执行js脚本中的任务, 输出`script` 
+    2.执行2次创建宏任务(定时器回调)的函数, 但当前还未结束宏任务执行(js脚本属于宏任务),所以不会立即输出
+    3.执行一个延后的定时器,会创建一个宏任务

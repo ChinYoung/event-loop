@@ -39,7 +39,8 @@
 
   function createMacroTask(duration) {
     setTimeout(() => {
-      console.log('>macro task', new Date().valueOf());
+      console.log('>macro task');
+      createMicroTask()
     }, duration || 0);
   }
 

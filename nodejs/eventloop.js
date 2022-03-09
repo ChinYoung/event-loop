@@ -1,43 +1,41 @@
-function createPromiseMicrotask() {
-  return Promise.resolve().then(() => {console.log('promise micro task');})
-}
+console.log('script');
 
-function createPromise() {
+// micro task
+(function () {
+  return Promise
+    .resolve()
+    .then(() => { console.log('promise callback A') })
+})();
+
+// promise
+(function () {
   return new Promise(
-    resolve => {
+    (resolve) => {
       console.log('promise func');
       resolve()
     })
     .then(() => {
-      console.log('promise callback');
-      createPromiseMicrotask()
-      createNextTick('promise callback')
+      console.log('promise callback B');
     })
-}
+})();
 
-function createNextTick(source) {
-  process.nextTick(() => {console.log('nextTick', source ? `created at ${source}` : '');})
-}
 
-function createSetImmediate(params) {
-  setImmediate(() => {
-    console.log('setImmediate, will enter next loop');
-    createNextTick()
-    // this will run in next loop
-    createTimeout()
-  })
-}
+// micro task
+(function () {
+  process.nextTick(() => { console.log('nextTick'); })
+})();
 
-function createTimeout() {
+// task
+(function () {
   setTimeout(() => {
     console.log('setTimeout');
   }, 0);
-}
+})();
 
-console.log('script');
-createPromiseMicrotask()
-createPromise()
-createNextTick()
-createTimeout()
-createSetImmediate()
+// task
+(function () {
+  setImmediate(() => {
+    console.log('setImmediate');
+  })
+})();
 

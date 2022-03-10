@@ -16,7 +16,7 @@ function createTimeout() {
 function createPromiseCallback() {
   return Promise.resolve().then(() => {
     promiseCounter += 1
-    console.log('promise callback:', timeOutCounter);
+    console.log('promise callback:', promiseCounter);
     createTimeout()
   })
 }

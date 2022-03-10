@@ -1,6 +1,6 @@
 console.log('script');
 
-// micro task
+// micro task, promise callback
 (function () {
   return Promise
     .resolve()
@@ -20,19 +20,19 @@ console.log('script');
 })();
 
 
-// micro task
+// micro task, nextTick
 (function () {
   process.nextTick(() => { console.log('nextTick'); })
 })();
 
-// task
+// task timers
 (function () {
   setTimeout(() => {
     console.log('setTimeout');
   }, 0);
 })();
 
-// task
+// task setImmediate
 (function () {
   setImmediate(() => {
     console.log('setImmediate');

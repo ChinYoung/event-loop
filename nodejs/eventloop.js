@@ -7,7 +7,7 @@ console.log('script');
     .then(() => { console.log('promise callback A') })
 })();
 
-// promise
+// promise func and promise callback
 (function () {
   return new Promise(
     (resolve) => {
@@ -25,14 +25,14 @@ console.log('script');
   process.nextTick(() => { console.log('nextTick'); })
 })();
 
-// task timers
+// task, timers
 (function () {
   setTimeout(() => {
     console.log('setTimeout');
   }, 0);
 })();
 
-// task setImmediate
+// task, setImmediate
 (function () {
   setImmediate(() => {
     console.log('setImmediate');

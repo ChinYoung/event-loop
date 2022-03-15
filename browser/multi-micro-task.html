@@ -13,11 +13,7 @@
 </body>
 <script>
   function createMicroTask() {
-    return Promise.resolve().then(
-      () => {
-        console.log('micro task >>');
-      }
-    )
+    return Promise.resolve().then(() => { console.log('micro task >>'); })
   }
 
   function createMultiMicroTask(id) {

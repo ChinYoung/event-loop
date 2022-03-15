@@ -29,6 +29,7 @@ console.log('script');
 (function () {
   setTimeout(() => {
     console.log('setTimeout');
+    return Promise.resolve().then(() => { console.log('promise callback C'); })
   }, 0);
 })();
 

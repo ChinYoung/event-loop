@@ -8,7 +8,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop: nodejs",
+      "name": "event loop:nodejs:basic",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -17,11 +17,11 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop: pool-wrap-back",
+      "name": "event loop:nodejs:pool-wrap-back",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/nodejs/poll-wrap-back/script.js"
+      "program": "${workspaceFolder}/nodejs/poll/poll-wrap-back.js"
     }
   ]
 }

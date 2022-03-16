@@ -17,7 +17,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:micro task:next tick",
+      "name": "event loop:nodejs: micro task: next tick",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -26,7 +26,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:micro task:microTaskQueue",
+      "name": "event loop:nodejs: micro task: microTaskQueue",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -35,7 +35,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:pool-wrap-back",
+      "name": "event loop:nodejs: pool-wrap-back",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -44,7 +44,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:setImmediate",
+      "name": "event loop:nodejs: setImmediate",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -53,7 +53,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:setTimeout",
+      "name": "event loop:nodejs: setTimeout",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -62,7 +62,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:heavy calculation",
+      "name": "event loop:nodejs: heavy calculation",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -71,7 +71,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs:sliced calculation",
+      "name": "event loop:nodejs: sliced calculation",
       "skipFiles": [
         "<node_internals>/**"
       ],

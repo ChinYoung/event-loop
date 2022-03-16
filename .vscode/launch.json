@@ -17,11 +17,47 @@
     {
       "type": "pwa-node",
       "request": "launch",
+      "name": "event loop:nodejs:micro task:next tick",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/nodejs/microTask/nextTickFirst.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "event loop:nodejs:micro task:microTaskQueue",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/nodejs/microTask/microTaskQueue.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
       "name": "event loop:nodejs:pool-wrap-back",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/nodejs/poll/poll-wrap-back.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "event loop:nodejs:setImmediate",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/nodejs/examples/setImmediate/setImmediate.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "event loop:nodejs:setTimeout",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/nodejs/examples/setImmediate/setTimeout.js"
     },
     {
       "type": "pwa-node",
@@ -40,6 +76,6 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/nodejs/examples/slice/slicedCalculation.js"
-    }
+    },
   ]
 }

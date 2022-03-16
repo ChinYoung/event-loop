@@ -62,11 +62,11 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs: heavy calculation",
+      "name": "event loop:nodejs: intensive calculation",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/nodejs/examples/slice/heavyCalculation.js"
+      "program": "${workspaceFolder}/nodejs/examples/slice/intensiveCalculation.js"
     },
     {
       "type": "pwa-node",

@@ -44,24 +44,6 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "event loop:nodejs: setImmediate",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/nodejs/examples/setImmediate/setImmediate.js"
-    },
-    {
-      "type": "pwa-node",
-      "request": "launch",
-      "name": "event loop:nodejs: setTimeout",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/nodejs/examples/setImmediate/setTimeout.js"
-    },
-    {
-      "type": "pwa-node",
-      "request": "launch",
       "name": "event loop:nodejs: intensive calculation",
       "skipFiles": [
         "<node_internals>/**"

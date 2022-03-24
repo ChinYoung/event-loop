@@ -4,7 +4,6 @@
   // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
       "type": "pwa-node",
       "request": "launch",
@@ -58,6 +57,15 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/nodejs/examples/slice/slicedCalculation.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "event loop:nodejs: timerVsSetImmediate",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/nodejs/examples/timerVsSetImmediate.js"
     },
   ]
 }
